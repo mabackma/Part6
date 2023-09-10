@@ -10,11 +10,15 @@ const notificationSlice = createSlice({
   }
 })
 
-export const displayNotification = (message) => (dispatch) => {
-  dispatch(notificationChange(message))
-  setTimeout(() => {
-    dispatch(notificationChange(''))
-  }, 5000)
+// Returns a dispatch
+export const displayNotification = (message) => {
+  return (dispatch) => {
+    dispatch(notificationChange(message))
+
+    setTimeout(() => {
+      dispatch(notificationChange(''))
+    }, 5000)
+  }
 }
 
 export const { notificationChange } = notificationSlice.actions
