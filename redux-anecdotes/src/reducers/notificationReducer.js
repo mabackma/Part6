@@ -10,11 +10,10 @@ const notificationSlice = createSlice({
   }
 })
 
-// Returns a dispatch
+// Returns two dispatch calls. Redux Thunk allows to dispatch actions asynchronously.
 export const displayNotification = (message) => {
   return (dispatch) => {
     dispatch(notificationChange(message))
-
     setTimeout(() => {
       dispatch(notificationChange(''))
     }, 5000)
